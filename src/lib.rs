@@ -149,7 +149,7 @@ where
         .await
 }
 
-#[derive(Clone, Copy)]
+#[derive(Debug, Clone, Copy)]
 enum Backoff {
     Fixed,
     Exponential { exponent: f64 },
@@ -225,7 +225,7 @@ impl Iterator for BackoffIter {
 /// A default is provided, configured
 /// to retry a task 5 times with exponential backoff
 /// starting with a 1 second delay
-#[derive(Clone)]
+#[derive(Debug, Clone)]
 pub struct RetryPolicy {
     backoff: Backoff,
     #[cfg(feature = "rand")]
